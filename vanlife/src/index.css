@@ -1,9 +1,29 @@
-* {
-  box-sizing: border-box;
-}
-
-html,
 body {
   margin: 0;
   padding: 0;
+}
+
+.navbar {
+  background-color: beige;
+  padding: 40;
+}
+
+.logo {
+  font-size: xx-large;
+  color: black;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+}
+
+/* .links {
+  word-spacing: 10px;
+} */
+
+.link {
+  font-size: large;
+  float: right;
+  padding-right: 10;
+  color: dimgray;
+  text-decoration: none;
 }
