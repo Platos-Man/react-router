@@ -107,6 +107,10 @@ header a:hover {
 }
 
 /*** ABOUT PAGE ***/
+.about-hero-image-background {
+  background-color: rgb(59, 66, 82);
+}
+
 .about-hero-image {
   max-width: 100%;
   margin-left: auto;
