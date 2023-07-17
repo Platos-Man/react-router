@@ -1,36 +1,8 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import styles from "./index.css";
+import App from "./App";
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <header>
-        <NavBar />
-      </header>
+import "../public/index.css";
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
-
-const NavBar = () => {
-  return (
-    <>
-      <Link className="logo" to={"/"}>
-        #VANLIFE
-      </Link>
-      <nav>
-        <Link to={"/about"}>About</Link>
-      </nav>
-    </>
-  );
-};
+import "../server";
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
