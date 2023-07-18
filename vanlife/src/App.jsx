@@ -3,14 +3,15 @@ import About from "./pages/About";
 import Vans from "./pages/Vans";
 import NavBar from "./components/NavBar";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const [vans, setVans] = useState([]);
   useEffect(() => {
-    fetch("/api/vans").then((data) => setVans(data));
-    console.log(vans);
+    fetch("/api/vans")
+      .then((res) => res.json())
+      .then((data) => setVans(data.vans));
   }, []);
 
   return (
@@ -21,7 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/vans" element={<Vans />} />
+        <Route path="/vans" element={<Vans vans={vans} />} />
       </Routes>
     </BrowserRouter>
   );
