@@ -4,16 +4,14 @@ import About from "./pages/About";
 import Vans from "./pages/Vans";
 import VanDetail from "./pages/VanDetail";
 
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Header";
 
 import "../server";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <header>
-        <NavBar />
-      </header>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
