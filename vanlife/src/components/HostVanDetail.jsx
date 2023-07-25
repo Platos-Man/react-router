@@ -27,7 +27,7 @@ const HostVanDetail = () => {
             <h4>${van.price}/day</h4>
           </div>
         </div>
-        <div>
+        <nav className="host-van-detail-nav">
           <NavLink end className={({ isActive }) => (isActive ? "active" : null)} to={"."}>
             Details
           </NavLink>
@@ -37,7 +37,7 @@ const HostVanDetail = () => {
           <NavLink className={({ isActive }) => (isActive ? "active" : null)} to={"photos"}>
             Photos
           </NavLink>
-        </div>
+        </nav>
         <Outlet />
       </div>
     </section>
