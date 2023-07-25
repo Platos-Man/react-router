@@ -15,7 +15,7 @@ const HostVanDetail = () => {
 
   return (
     <section>
-      <Link to=".." relative="path" className="back-button">
+      <Link to="../vans" className="back-button">
         &larr; <span>Back to all vans</span>
       </Link>
       <div className="host-van-detail-layout-container">
@@ -38,7 +38,7 @@ const HostVanDetail = () => {
             Photos
           </NavLink>
         </nav>
-        <Outlet />
+        <Outlet context={van} />
       </div>
     </section>
   );
