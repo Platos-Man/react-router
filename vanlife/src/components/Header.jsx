@@ -7,13 +7,13 @@ const Header = () => {
         #VANLIFE
       </Link>
       <nav>
-        <NavLink className={({ isActive }) => (isActive ? "active" : null)} to={"/host"}>
+        <NavLink className={({ isActive }) => (isActive ? "active" : null)} to={"host"}>
           Host
         </NavLink>
-        <NavLink className={({ isActive }) => (isActive ? "active" : null)} to={"/about"}>
+        <NavLink className={({ isActive }) => (isActive ? "active" : null)} to={"about"}>
           About
         </NavLink>
-        <NavLink className={({ isActive }) => (isActive ? "active" : null)} to={"/vans"}>
+        <NavLink className={({ isActive }) => (isActive ? "active" : null)} to={"vans"}>
           Vans
         </NavLink>
       </nav>
