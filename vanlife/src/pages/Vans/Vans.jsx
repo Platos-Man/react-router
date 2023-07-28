@@ -6,6 +6,8 @@ const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const typeFilter = searchParams.get("type");
+  console.log(typeFilter);
+  console.log(typeFilter === "simple");
 
   console.log(typeFilter);
   useEffect(() => {
@@ -16,22 +18,44 @@ const Vans = () => {
 
   const displayedVans = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter) : vans;
 
+  const handleFilterChange = (key, value) => {
+    setSearchParams((prev) => {
+      if (!value) {
+        prev.delete(key);
+      } else {
+        prev.set(key, value);
+      }
+      return prev;
+    });
+  };
+
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
       <div className="van-list-filter-buttons">
-        <button onClick={() => setSearchParams({ type: "simple" })} className="van-type simple">
+        <button
+          onClick={() => handleFilterChange("type", "simple")}
+          className={`van-type simple ${typeFilter === "simple" ? "selected" : ""}`}
+        >
           Simple
         </button>
-        <button onClick={() => setSearchParams({ type: "rugged" })} className="van-type rugged">
+        <button
+          onClick={() => handleFilterChange("type", "rugged")}
+          className={`van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`}
+        >
           Rugged
         </button>
-        <button onClick={() => setSearchParams({ type: "luxury" })} className="van-type luxury">
+        <button
+          onClick={() => handleFilterChange("type", "luxury")}
+          className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`}
+        >
           Luxury
         </button>
-        <button onClick={() => setSearchParams({})} className="van-type clear-filters">
-          Clear filter
-        </button>
+        {typeFilter ? (
+          <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filters">
+            Clear filter
+          </button>
+        ) : null}
       </div>
       <div className="van-list">
         {displayedVans.map((van) => (
