@@ -59,17 +59,17 @@ const Vans = () => {
       </div>
       <div className="van-list">
         {displayedVans.map((van) => (
-          <Van key={van.id} van={van} />
+          <Van key={van.id} van={van} searchParams={searchParams} />
         ))}
       </div>
     </div>
   );
 };
 
-const Van = ({ van }) => {
+const Van = ({ van, searchParams }) => {
   return (
     <div className="van-tile">
-      <Link to={`/vans/${van.id}`}>
+      <Link to={van.id} state={{ searchParams: searchParams.toString() }}>
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>
