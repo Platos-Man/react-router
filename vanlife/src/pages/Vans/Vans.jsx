@@ -59,17 +59,17 @@ const Vans = () => {
       </div>
       <div className="van-list">
         {displayedVans.map((van) => (
-          <Van key={van.id} van={van} searchParams={searchParams} />
+          <Van key={van.id} van={van} searchParams={searchParams} typeFilter={typeFilter} />
         ))}
       </div>
     </div>
   );
 };
 
-const Van = ({ van, searchParams }) => {
+const Van = ({ van, searchParams, typeFilter }) => {
   return (
     <div className="van-tile">
-      <Link to={van.id} state={{ searchParams: searchParams.toString() }}>
+      <Link to={van.id} state={{ search: `?${searchParams.toString()}`, type: typeFilter }}>
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>
