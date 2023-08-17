@@ -7,7 +7,6 @@ const HostVanDetail = () => {
   useEffect(() => {
     fetch(`/api/host/vans/${params.id}`).then((res) => res.json().then((data) => setVan(data.vans)));
   }, [params.id]);
-  console.log(van);
 
   if (!van) {
     return <h1>Loading...</h1>;
