@@ -1,4 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -16,6 +23,8 @@ import HostVanInfo from "./pages/Host/HostVanInfo";
 
 import HostLayout from "./components/HostLayout";
 import Layout from "./components/Layout";
+
+// const router = createBrowserRouter(createRoutesFromElements);
 
 const App = () => {
   return (
