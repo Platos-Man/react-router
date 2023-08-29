@@ -7,7 +7,6 @@ const getVans = async () => {
       status: res.status,
     };
   }
-  console.log(res);
   const data = await res.json();
   return data.vans;
 };
