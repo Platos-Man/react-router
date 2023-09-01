@@ -7,7 +7,9 @@ const getVans = async () => {
       status: res.status,
     };
   }
-  const data = await res.json();
+  console.log(res);
+  const data = await res.text();
+  console.log(data);
   return data.vans;
 };
 

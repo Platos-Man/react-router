@@ -13,9 +13,7 @@ const Vans = () => {
 
   const typeFilter = searchParams.get("type");
 
-  const displayedVans = typeFilter
-    ? vans.filter((van) => van.type.toLowerCase() === typeFilter)
-    : vans;
+  const displayedVans = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter) : vans;
 
   const handleFilterChange = (key, value) => {
     setSearchParams((prev) => {
@@ -38,45 +36,31 @@ const Vans = () => {
       <div className="van-list-filter-buttons">
         <button
           onClick={() => handleFilterChange("type", "simple")}
-          className={`van-type simple ${
-            typeFilter === "simple" ? "selected" : ""
-          }`}
+          className={`van-type simple ${typeFilter === "simple" ? "selected" : ""}`}
         >
           Simple
         </button>
         <button
           onClick={() => handleFilterChange("type", "rugged")}
-          className={`van-type rugged ${
-            typeFilter === "rugged" ? "selected" : ""
-          }`}
+          className={`van-type rugged ${typeFilter === "rugged" ? "selected" : ""}`}
         >
           Rugged
         </button>
         <button
           onClick={() => handleFilterChange("type", "luxury")}
-          className={`van-type luxury ${
-            typeFilter === "luxury" ? "selected" : ""
-          }`}
+          className={`van-type luxury ${typeFilter === "luxury" ? "selected" : ""}`}
         >
           Luxury
         </button>
         {typeFilter ? (
-          <button
-            onClick={() => handleFilterChange("type", null)}
-            className="van-type clear-filters"
-          >
+          <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filters">
             Clear filter
           </button>
         ) : null}
       </div>
       <div className="van-list">
         {displayedVans.map((van) => (
-          <Van
-            key={van.id}
-            van={van}
-            searchParams={searchParams}
-            typeFilter={typeFilter}
-          />
+          <Van key={van.id} van={van} searchParams={searchParams} typeFilter={typeFilter} />
         ))}
       </div>
     </div>
@@ -86,10 +70,7 @@ const Vans = () => {
 const Van = ({ van, searchParams, typeFilter }) => {
   return (
     <div className="van-tile">
-      <Link
-        to={van.id}
-        state={{ search: `?${searchParams.toString()}`, type: typeFilter }}
-      >
+      <Link to={van.id} state={{ search: `?${searchParams.toString()}`, type: typeFilter }}>
         <img src={van.imageUrl} />
         <div className="van-info">
           <h3>{van.name}</h3>
