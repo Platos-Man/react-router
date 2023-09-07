@@ -42,6 +42,5 @@ export const hostVanLoader = async ({ params }) => {
 // /login loaders
 
 export const loginLoader = async ({ request }) => {
-  console.log(request);
-  return null;
+  return new URL(request.url).searchParams.get("message");
 };
