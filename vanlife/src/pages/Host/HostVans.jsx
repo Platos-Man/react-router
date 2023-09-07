@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+export const hostVansLoader = async () => {
+  return null;
+};
+
 const HostVans = () => {
   const [vans, setVans] = useState([]);
   useEffect(() => {

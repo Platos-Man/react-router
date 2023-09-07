@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useSearchParams, useLoaderData } from "react-router-dom";
-import getVans from "../../api";
+import { getVans } from "../../api";
 
-export const loader = () => {
+export const vansLoader = async () => {
   return getVans();
 };
 
@@ -25,10 +25,6 @@ const Vans = () => {
       return prev;
     });
   };
-
-  // if (error) {
-  //   return <h1>There was an error: {error.message}</h1>;
-  // }
 
   return (
     <div className="van-list-container">

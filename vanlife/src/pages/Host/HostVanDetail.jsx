@@ -1,6 +1,10 @@
 import { NavLink, useParams, Link, Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+export const hostVanLoader = async () => {
+  return null;
+};
+
 const HostVanDetail = () => {
   const params = useParams();
   const [van, setVan] = useState(null);
