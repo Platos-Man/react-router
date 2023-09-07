@@ -8,17 +8,27 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
-import Vans, { vansLoader } from "./pages/Vans/Vans";
-import VanDetail, { vanLoader } from "./pages/Vans/VanDetail";
+import Vans from "./pages/Vans/Vans";
+import VanDetail from "./pages/Vans/VanDetail";
 
-import Dashboard, { dashboardLoader } from "./pages/Host/Dashboard";
-import Income, { incomeLoader } from "./pages/Host/Income";
-import Reviews, { reviewsLoader } from "./pages/Host/Reviews";
-import HostVans, { hostVansLoader } from "./pages/Host/HostVans";
-import HostVanDetail, { hostVanLoader } from "./pages/Host/HostVanDetail";
+import Dashboard from "./pages/Host/Dashboard";
+import Income from "./pages/Host/Income";
+import Reviews from "./pages/Host/Reviews";
+import HostVans from "./pages/Host/HostVans";
+import HostVanDetail from "./pages/Host/HostVanDetail";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import HostVanInfo from "./pages/Host/HostVanInfo";
+
+import {
+  vansLoader,
+  vanLoader,
+  dashboardLoader,
+  incomeLoader,
+  reviewsLoader,
+  hostVansLoader,
+  hostVanLoader,
+} from "./loaders";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

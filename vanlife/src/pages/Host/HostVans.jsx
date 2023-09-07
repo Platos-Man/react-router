@@ -1,9 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { getHostVans } from "../../api";
-
-export const hostVansLoader = async () => {
-  return getHostVans();
-};
 
 const HostVans = () => {
   const vans = useLoaderData();
@@ -23,7 +18,9 @@ const HostVans = () => {
   return (
     <section>
       <h1 className="host-vans-title">Your listed vans</h1>
-      <div className="host-vans-list">{vans.length > 0 ? <section>{hostVansEls}</section> : <h2>Loading...</h2>}</div>
+      <div className="host-vans-list">
+        <section>{hostVansEls}</section>
+      </div>
     </section>
   );
 };

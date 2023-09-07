@@ -1,9 +1,4 @@
 import { Link, useLocation, useLoaderData } from "react-router-dom";
-import { getVans } from "../../api";
-
-export const vanLoader = async ({ params }) => {
-  return getVans(params.id);
-};
 
 const VanDetail = () => {
   const location = useLocation();

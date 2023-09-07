@@ -1,9 +1,4 @@
-import { NavLink, useParams, Link, Outlet, useLoaderData } from "react-router-dom";
-import { getHostVans } from "../../api";
-
-export const hostVanLoader = async ({ params }) => {
-  return getHostVans(params.id);
-};
+import { NavLink, Link, Outlet, useLoaderData } from "react-router-dom";
 
 const HostVanDetail = () => {
   const van = useLoaderData();
