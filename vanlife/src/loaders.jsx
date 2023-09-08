@@ -1,42 +1,43 @@
-import { redirect } from "react-router-dom";
+import { defer } from "react-router-dom";
 import { getVans, getHostVans } from "./api";
 import { requireAuth } from "./utils";
 
 // /vans loaders
 
-export const vansLoader = async () => {
-  return getVans();
+export const vansLoader = () => {
+  return defer({ vans: getVans() });
 };
 
-export const vanLoader = async ({ params }) => {
-  return getVans(params.id);
+export const vanLoader = ({ params }) => {
+  return defer({ van: getVans(params.id) });
 };
 
 // /host loaders (protected)
 
-export const dashboardLoader = async () => {
-  await requireAuth();
+export const dashboardLoader = async ({ request }) => {
+  console.log(request, "dash");
+  await requireAuth(request);
   return null;
 };
 
-export const incomeLoader = async () => {
-  await requireAuth();
+export const incomeLoader = async ({ request }) => {
+  await requireAuth(request);
   return null;
 };
 
-export const reviewsLoader = async () => {
-  await requireAuth();
+export const reviewsLoader = async ({ request }) => {
+  await requireAuth(request);
   return null;
 };
 
-export const hostVansLoader = async () => {
-  await requireAuth();
-  return getHostVans();
+export const hostVansLoader = async ({ request }) => {
+  await requireAuth(request);
+  return defer({ vans: getHostVans() });
 };
 
-export const hostVanLoader = async ({ params }) => {
-  await requireAuth();
-  return getHostVans(params.id);
+export const hostVanLoader = async ({ params, request }) => {
+  await requireAuth(request);
+  return defer({ van: getHostVans(params.id) });
 };
 
 // /login loaders

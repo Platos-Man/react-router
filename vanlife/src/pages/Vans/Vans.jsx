@@ -1,12 +1,11 @@
-import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { Suspense } from "react";
+import { Link, useSearchParams, useLoaderData, Await } from "react-router-dom";
 
 const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const vans = useLoaderData();
-
+  const dataPromise = useLoaderData();
+  console.log(dataPromise);
   const typeFilter = searchParams.get("type");
-
-  const displayedVans = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter) : vans;
 
   const handleFilterChange = (key, value) => {
     setSearchParams((prev) => {
@@ -19,39 +18,50 @@ const Vans = () => {
     });
   };
 
+  const renderVanElements = (vans) => {
+    const displayedVans = typeFilter ? vans.filter((van) => van.type.toLowerCase() === typeFilter) : vans;
+    return (
+      <>
+        <div className="van-list-filter-buttons">
+          <button
+            onClick={() => handleFilterChange("type", "simple")}
+            className={`van-type button simple ${typeFilter === "simple" ? "selected" : ""}`}
+          >
+            Simple
+          </button>
+          <button
+            onClick={() => handleFilterChange("type", "rugged")}
+            className={`van-type button rugged ${typeFilter === "rugged" ? "selected" : ""}`}
+          >
+            Rugged
+          </button>
+          <button
+            onClick={() => handleFilterChange("type", "luxury")}
+            className={`van-type button luxury ${typeFilter === "luxury" ? "selected" : ""}`}
+          >
+            Luxury
+          </button>
+          {typeFilter ? (
+            <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filters">
+              Clear filter
+            </button>
+          ) : null}
+        </div>
+        <div className="van-list">
+          {displayedVans.map((van) => (
+            <Van key={van.id} van={van} searchParams={searchParams} typeFilter={typeFilter} />
+          ))}
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
-      <div className="van-list-filter-buttons">
-        <button
-          onClick={() => handleFilterChange("type", "simple")}
-          className={`van-type button simple ${typeFilter === "simple" ? "selected" : ""}`}
-        >
-          Simple
-        </button>
-        <button
-          onClick={() => handleFilterChange("type", "rugged")}
-          className={`van-type button rugged ${typeFilter === "rugged" ? "selected" : ""}`}
-        >
-          Rugged
-        </button>
-        <button
-          onClick={() => handleFilterChange("type", "luxury")}
-          className={`van-type button luxury ${typeFilter === "luxury" ? "selected" : ""}`}
-        >
-          Luxury
-        </button>
-        {typeFilter ? (
-          <button onClick={() => handleFilterChange("type", null)} className="van-type clear-filters">
-            Clear filter
-          </button>
-        ) : null}
-      </div>
-      <div className="van-list">
-        {displayedVans.map((van) => (
-          <Van key={van.id} van={van} searchParams={searchParams} typeFilter={typeFilter} />
-        ))}
-      </div>
+      <Suspense fallback={<h2>Loading vans...</h2>}>
+        <Await resolve={dataPromise.vans}>{renderVanElements}</Await>
+      </Suspense>
     </div>
   );
 };
