@@ -14,12 +14,6 @@ export const vanLoader = ({ params }) => {
 
 // /host loaders (protected)
 
-export const dashboardLoader = async ({ request }) => {
-  console.log(request, "dash");
-  await requireAuth(request);
-  return null;
-};
-
 export const incomeLoader = async ({ request }) => {
   await requireAuth(request);
   return null;

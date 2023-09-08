@@ -23,7 +23,6 @@ import HostVanInfo from "./pages/Host/HostVanInfo";
 import {
   vansLoader,
   vanLoader,
-  dashboardLoader,
   incomeLoader,
   reviewsLoader,
   hostVansLoader,
@@ -39,20 +38,20 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} loader={loginLoader} action={loginAction} />
 
       <Route path="vans" element={<Vans />} errorElement={<Error />} loader={vansLoader} />
-      <Route path="vans/:id" element={<VanDetail />} loader={vanLoader} />
+      <Route path="vans/:id" element={<VanDetail />} errorElement={<Error />} loader={vanLoader} />
 
       <Route path="host" element={<HostLayout />}>
-        <Route index element={<Dashboard />} loader={dashboardLoader} />
+        <Route index element={<Dashboard />} loader={hostVansLoader} />
         <Route path="income" element={<Income />} loader={incomeLoader} />
         <Route path="reviews" element={<Reviews />} loader={reviewsLoader} />
-        <Route path="vans" element={<HostVans />} loader={hostVansLoader} />
-        <Route path="vans/:id" element={<HostVanDetail />} loader={hostVanLoader}>
+        <Route path="vans" element={<HostVans />} errorElement={<Error />} loader={hostVansLoader} />
+        <Route path="vans/:id" element={<HostVanDetail />} errorElement={<Error />} loader={hostVanLoader}>
           <Route index element={<HostVanInfo />} />
           <Route path="pricing" element={<HostVanPricing />} />
           <Route path="photos" element={<HostVanPhotos />} />
         </Route>
       </Route>
-      {/* <Route path="*" element={<NotFound />} /> */}
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );
